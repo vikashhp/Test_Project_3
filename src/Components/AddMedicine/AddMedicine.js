@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useContext } from "react";
 import CartContext from "../Store/CartContext";
 
-const AddCandy =  (props) => {
+const AddMedicine =  (props) => {
   const cartCtx = useContext(CartContext);
   const inputName = useRef();
   const inputDescription = useRef();
@@ -12,9 +12,9 @@ const AddCandy =  (props) => {
     e.preventDefault();
 
     const candyData = {
-      candyName: inputName.current.value,
-      candyDescription: inputDescription.current.value,
-      candyPrice: inputPrice.current.value,
+      medicineName: inputName.current.value,
+      medicineDescription: inputDescription.current.value,
+      medicinePrice: inputPrice.current.value,
       id: Math.random(),
     };
     localStorage.setItem('price',inputPrice.current.value)
@@ -24,8 +24,7 @@ const AddCandy =  (props) => {
       amount: 1,
     });
 
-    const arr=[];
-    arr.push(candyData)
+   
     //  console.log(candyData)
     props.onAdd(candyData);
 
@@ -46,22 +45,22 @@ const AddCandy =  (props) => {
   return (
     <form onSubmit={submitHandler}>
       <div>
-        <label>Candy Name</label>
+        <label>Medicine Name</label>
         <input type="text" ref={inputName} />
       </div>
       <div>
-        <label>Candy Description</label>
+        <label>Medicine Description</label>
         <input type="text" ref={inputDescription} />
       </div>
       <div>
-        <label>Candy Price</label>
+        <label>Medicine Price</label>
         <input type="number" ref={inputPrice} />
       </div>
       <div>
-        <button type="submit">Add</button>
+        <button type="submit">Add Medicine</button>
       </div>
     </form>
   );
 };
 
-export default AddCandy;
+export default AddMedicine;
